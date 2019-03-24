@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from rango.search.mysearch import compare_strings
 from datetime import datetime
 
+#test git
 def get_search_categories(search_string, max_results = 5, threshold = 0):
     search_result_cats = []
     cat_score_list = []
