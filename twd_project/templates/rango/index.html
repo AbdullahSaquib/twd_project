@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Home{% endblock %}
+{% block body_block %}
+      {% if user.is_authenticated %}
+      <h1>Rango says... Hello {{user.username}}</h1>
+      {% else %}
+      <h1>Rango says... Hello world! </h1>
+      {% endif %}
+      {% if categories %}
+      <h3>All Categories</h3>
+      <ul>
+        {% for category in categories %}
+        <li><a href="/rango/category/{{category.slug}}">{{category.name}}</a></li>
+        {% endfor %}
+      </ul>
+      </br>
+      <h3>Top 5 Pages</h3>
+      <ul>
+        {% for page in pages %}
+        <li><a href="{% url 'goto'%}?page_id={{page.id}}">{{page.title}}</a></li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        <strong>There are no categories to show</strong>
+      {% endif %}
+</br>
+<p>Visits : {{visits}}</p>
+{% endblock %}
